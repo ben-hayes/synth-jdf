@@ -1,32 +1,515 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
   <title>Off-manifold robustness in synthesizer inversion with joint distribution flow matching</title>
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      table-layout: fixed;
+      margin-bottom: 3rem;
     }
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: "Noto Sans", system-ui, -apple-system, sans-serif;
-      background: #fff;
-      color: #363636;
-      padding: 0 16px;
-    }
-    p {
-      font-size: 1.25rem;
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
       text-align: center;
     }
+    th {
+      background: #f0f0f0;
+    }
+    .play-btn, .ctrl-btn, .refresh-btn {
+      cursor: pointer;
+      padding: 6px 12px;
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .expanded-row {
+      background: #fafafa;
+    }
+    .waveform,
+    .spectrogram {
+      height: 80px;
+      background: #e8e8e8;
+      margin: 5px 0;
+    }
+    /* inline (always-visible) model cells */
+    .model-cell {
+      vertical-align: top;
+      min-width: 190px;
+    }
+    .model-cell .spectrogram {
+      height: 72px;
+      margin: 0 0 2px;
+    }
+    .model-cell .waveform {
+      height: 24px;
+      background: transparent;
+      margin: 0 0 6px;
+    }
+    .model-cell .play-btn {
+      padding: 4px 10px;
+      font-size: 14px;
+    }
+    td.sample-id {
+      font-variant-numeric: tabular-nums;
+      color: #777;
+      width: 4.5rem;
+    }
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .playerHead {
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
 </head>
 <body>
-  <p>Online supplement coming soon.</p>
-</body>
-</html>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-2 publication-title">Off-manifold robustness in synthesizer inversion with joint distribution flow matching</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+<!--                 <a href="javascript:void(0)" target="">Authors anonymized for review</a><sup></sup></span> -->
+              <span class="author-block">Anonymous</span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- Paper PDF link -->
+                      <span class="link-block">
+                        <a href="static/pdfs/main.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+                         <!-- Supplementary PDF link -->
+                      <span class="link-block">
+                        <a href="static/pdfs/sup.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Supplementary</span>
+                      </a>
+                    </span>
+
+                  <!-- Github link -->
+
+                <!-- ArXiv abstract Link -->
+              <!--   <span class="link-block"> -->
+              <!--     <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank" -->
+              <!--     class="external-link button is-normal is-rounded is-dark"> -->
+              <!--     <span class="icon"> -->
+              <!--       <i class="ai ai-arxiv"></i> -->
+              <!--     </span> -->
+              <!--     <span>arXiv</span> -->
+              <!--   </a> -->
+              <!-- </span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<!-- <section class="hero teaser"> -->
+<!--   <div class="container is-max-desktop"> -->
+<!--     <div class="hero-body"> -->
+<!--         <img src="static/images/overview.png" alt="MY ALT TEXT"/> -->
+<!--         <h2 class="subtitle has-text-centered"> -->
+<!--           First image description. -->
+<!--         </h2> -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- </section> -->
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+          Recent work on synthesizer inversion shows that generative models outperform deterministic approaches by explicitly modeling the ambiguity in mapping audio to parameters. 
+Training such models, however, requires audio-parameter pairs, which are typically obtained by rendering sampled or preset parameters through the synthesizer itself.
+This creates a train-test mismatch that can degrade performance on off-manifold real-world recordings, for which ground-truth parameter annotations do not exist.
+To circumvent this obstacle, we propose to model the <em>joint</em> distribution of audio and parameters with a multi-modal continuous normalizing flow using independent noise schedules for each modality.
+This formulation allows us to train joint and conditional densities with paired synthesizer data, while unpaired real recordings train the audio marginal alone, exposing the model to off-manifold signals without requiring parameter labels.
+Further, because the model learns to map from audio to parameters at all noise levels, we find that partially noising the audio reference at inference improves real-audio reconstruction, consistent with reducing sensitivity to distribution-specific detail while preserving coarse structure.
+Evaluating on Surge XT and Dexed, we find our method substantially improves inversion of real-world audio while remaining competitive in-domain.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+
+
+<!-- <!-- Youtube video --> 
+<!-- <section class="hero is-small"> -->
+<!--   <div class="hero-body"> -->
+<!--     <div class="container"> -->
+<!--       <!-- Paper video. --> 
+<!--       <!-- <h2 class="title is-3">Overview Figure</h2> --> 
+<!--       <div class="columns is-centered has-text-centered"> -->
+<!--         <div class="column is-two-thirds"> -->
+<!--            -->
+<!--           <div class="container"> -->
+<!--             <img src="static/images/overview.png" alt="MY ALT TEXT" style="width:800px"/> -->
+<!--           </div> -->
+<!--         <h2 class="subtitle has-text-centered"> -->
+<!--           <b>Top: </b>  Audio synthesis is the forward map we wish to invert. -->
+<!--    Synthesizers can be invariant to certain transformations of their parameters, which makes the inverse problem ill-posed. -->
+<!--    <b>Bottom-left: </b> Synthesizer inversion by parameter regression. The neural network produces a point estimate, and does not account for symmetries in the synthesizer. <b>Bottom-middle: </b> A generative model approximates the conditional distribution of parameters <b>x</b> given audio <b>y</b>, but can only learn the appropriate invariances if present in the data. <b>Bottom-right: </b> Using an equivariant flow, the learned distribution is inherently invariant to the symmetries of the synthesizer. -->
+<!--         </h2> -->
+<!--         </div> -->
+<!--       </div> -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- </section> -->
+<!-- <!-- End youtube video -->
+
+
+<!-- On-Manifold Audio Examples -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title">On-Manifold Audio Examples</h2>
+      <div class="subtitle">
+        In these examples, the target audio was rendered by the synthesizer itself.
+      </div>
+      <div class="text">
+        We invert reconstructions for two synthesizers: <em>Surge XT</em>, a full-featured open-source subtractive synth used in real-world production, and <em>Dexed</em>, an open-source emulation of the Yamaha DX7 FM synthesizer. Because the targets are drawn from each synthesizer's own output, a parameter setting that exactly reproduces the target always exists; the task reduces to recovering it.
+        <br />
+        <br />
+      </div>
+      <div class="text">
+        Clicking any play button opens waveform and spectrogram displays for side-by-side comparison. Press &ldquo;Fetch more samples&rdquo; to load a different batch.
+      </div>
+      <div id="container-surge_vst"></div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <div id="container-dexed_vst"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Off-Manifold Audio Examples -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title">Off-Manifold Audio Examples</h2>
+      <div class="subtitle">
+        In these examples, the target audio is a real-world recording &mdash; not produced by either synthesizer.
+      </div>
+      <div class="text">
+        Off-manifold inversion is the harder regime: the model must produce parameter estimates for audio that no setting of the synthesizer can exactly reproduce, and ground-truth annotations do not exist.
+      </div>
+      <div id="container-surge_ood"></div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <div id="container-dexed_ood"></div>
+    </div>
+  </div>
+</section>
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>BibTex will go here</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+  <script type="module">
+    import WaveSurfer from 'https://cdn.jsdelivr.net/npm/wavesurfer.js@7/dist/wavesurfer.esm.js';
+    import Spectrogram from 'https://cdn.jsdelivr.net/npm/wavesurfer.js@7/dist/plugins/spectrogram.js';
+
+    const MODEL_LABELS = {
+      'ground_truth': 'Ground Truth',
+      'omni-audio': 'JDF-A',
+      'omni': 'JDF',
+      'omni-param': 'JDF-<span style="font-variant: small-caps;">ParamOnly</span>',
+      'base': 'Conditional'
+    };
+
+    const SURGE_MODELS = ['ground_truth', 'omni-audio', 'omni', 'omni-param', 'base'];
+    const DEXED_MODELS = ['ground_truth', 'omni-audio', 'base'];
+
+    const TABLES = [
+      { title: 'Surge XT', path: 'surge_vst', models: SURGE_MODELS },
+      { title: 'Dexed', path: 'dexed_vst', models: DEXED_MODELS },
+      { title: 'Surge XT', path: 'surge_ood', models: SURGE_MODELS },
+      { title: 'Dexed', path: 'dexed_ood', models: DEXED_MODELS },
+    ];
+
+    function updateButtonText(button, isPlaying) {
+      button.innerHTML = isPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>';
+    }
+
+    function buildTableUI(title, tableId, path, models) {
+      const container = document.createElement('div');
+      const heading = document.createElement('h2');
+      heading.classList.add('playerHead')
+      heading.classList.add('title')
+      heading.classList.add('is-4')
+      heading.innerHTML = `${title} <button class="refresh-btn" data-path="${path}" data-table="${tableId}"><i class="fas fa-sync-alt"></i> Fetch more samples</button>`;
+
+      const table = document.createElement('table');
+      table.id = tableId;
+      table.innerHTML = `
+        <thead>
+          <tr>
+            <th>Sample</th>
+            ${models.map(m => `<th>${MODEL_LABELS[m]}</th>`).join('')}
+          </tr>
+        </thead>
+        <tbody></tbody>
+      `;
+      container.appendChild(heading);
+      container.appendChild(table);
+      document.getElementById('container-' + path).innerHTML = '';
+      document.getElementById('container-' + path).appendChild(container);
+    }
+
+    // One WaveSurfer per model cell, built lazily as rows scroll into view so
+    // that "always visible" does not mean "decode 160 clips on load".
+    const tableInstances = new Map();   // tableId -> [ws, ...]
+
+    function destroyTable(tableId) {
+      (tableInstances.get(tableId) || []).forEach(ws => {
+        try { ws.destroy(); } catch (e) { /* already gone */ }
+      });
+      tableInstances.set(tableId, []);
+    }
+
+    function pauseAllExcept(keep) {
+      tableInstances.forEach(list => list.forEach(ws => {
+        if (ws !== keep && ws.isPlaying()) ws.pause();
+      }));
+      document.querySelectorAll('.play-btn').forEach(b => {
+        if (b !== keep?.__btn) updateButtonText(b, false);
+      });
+    }
+
+    function createCellSurfer(cell, url, btn, tableId) {
+      const ws = WaveSurfer.create({
+        container: cell.querySelector('.waveform'),
+        waveColor: '#b5b5b5',
+        progressColor: '#007BFF',
+        cursorColor: '#333',
+        height: 24,
+        plugins: [Spectrogram.create({
+          container: cell.querySelector('.spectrogram'),
+          scale: 'mel',
+          labels: false,
+          height: 72,
+        })],
+      });
+      ws.__btn = btn;
+      ws.load(url);
+      ws.on('finish', () => updateButtonText(btn, false));
+      btn.addEventListener('click', () => {
+        if (ws.isPlaying()) {
+          ws.pause();
+          updateButtonText(btn, false);
+        } else {
+          pauseAllExcept(ws);
+          ws.play();
+          updateButtonText(btn, true);
+        }
+      });
+      (tableInstances.get(tableId) || []).push(ws);
+      return ws;
+    }
+
+    const cellObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const cell = entry.target;
+        obs.unobserve(cell);
+        createCellSurfer(cell, cell.dataset.url,
+                         cell.querySelector('.play-btn'), cell.dataset.table);
+      });
+    }, { rootMargin: '300px 0px' });
+
+    function populateTableBody(samples, tableId, path, models) {
+      const table = document.getElementById(tableId);
+      const tbody = table.querySelector('tbody');
+      destroyTable(tableId);
+      tbody.innerHTML = '';
+
+      samples.forEach(sample => {
+        const row = document.createElement('tr');
+        row.setAttribute('data-sample', sample);
+        row.innerHTML = `<td class="sample-id">${sample}</td>` + models.map(m => `
+          <td class="model-cell" data-table="${tableId}"
+              data-url="static/audio/restructured/${path}/${sample}/${m}.mp3">
+            <div class="spectrogram"></div>
+            <div class="waveform"></div>
+            <button class="play-btn" data-model="${m}"><i class='fas fa-play'></i></button>
+          </td>`).join('');
+        tbody.appendChild(row);
+        row.querySelectorAll('.model-cell').forEach(c => cellObserver.observe(c));
+      });
+    }
+
+    function shuffleArray(array, seed = 51) {
+      let rng = mulberry32(seed);
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(rng() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function mulberry32(a) {
+      return function () {
+        let t = a += 0x6D2B79F5;
+        t = Math.imul(t ^ t >>> 15, t | 1);
+        t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+      };
+    }
+
+    async function loadSamples(seed = 51) {
+      for (const { title, path, models } of TABLES) {
+        const res = await fetch(`static/txt/${path}.txt`);
+        const text = await res.text();
+        const lines = text.split('\n').filter(Boolean);
+        const picked = shuffleArray(lines, seed).slice(0, 8);
+        const tableId = `table-${path}`;
+        buildTableUI(title, tableId, path, models);
+        populateTableBody(picked, tableId, path, models);
+      }
+
+      document.addEventListener('click', async (e) => {
+        const btn = e.target.closest('.refresh-btn');
+        if (btn) {
+          const path = btn.dataset.path;
+          const tableId = btn.dataset.table;
+          const tableMeta = TABLES.find(t => t.path === path);
+          const models = tableMeta ? tableMeta.models : [];
+          const res = await fetch(`static/txt/${path}.txt`);
+          const text = await res.text();
+          const lines = text.split('\n').filter(Boolean);
+          const picked = shuffleArray(lines, Date.now()).slice(0, 8);
+          populateTableBody(picked, tableId, path, models);
+        }
+      });
+    }
+
+    loadSamples(81084);
+  </script>
+
+  </body>
+  </html>
