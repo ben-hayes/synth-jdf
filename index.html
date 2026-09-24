@@ -252,12 +252,12 @@ Evaluating on Surge XT and Dexed, we find our method substantially improves inve
         In these examples, the target audio was rendered by the synthesizer itself.
       </div>
       <div class="text">
-        We invert reconstructions for two synthesizers: <em>Surge XT</em>, a full-featured open-source subtractive synth used in real-world production, and <em>Dexed</em>, an open-source emulation of the Yamaha DX7 FM synthesizer. Because the targets are drawn from each synthesizer's own output, a parameter setting that exactly reproduces the target always exists; the task reduces to recovering it.
+        We invert reconstructions for two synthesizers: <em>Surge XT</em>, a full-featured open-source subtractive synth used in real-world production, and <em>Dexed</em>, an open-source emulation of the Yamaha DX7 FM synthesizer. Targets are rendered from parameter settings sampled randomly from each synthesizer's parameter space, so a setting that exactly reproduces the target always exists; the task reduces to recovering it.
         <br />
         <br />
       </div>
       <div class="text">
-        Clicking any play button opens waveform and spectrogram displays for side-by-side comparison. Press &ldquo;Fetch more samples&rdquo; to load a different batch.
+        Each cell shows a mel spectrogram and waveform; press play to listen. Press &ldquo;Fetch more samples&rdquo; to load a different batch.
       </div>
       <div id="container-surge_vst"></div>
     </div>
@@ -279,10 +279,10 @@ Evaluating on Surge XT and Dexed, we find our method substantially improves inve
     <div class="container">
       <h2 class="title">Off-Manifold Audio Examples</h2>
       <div class="subtitle">
-        In these examples, the target audio is a real-world recording &mdash; not produced by either synthesizer.
+        In these examples, the target audio did not come from the synthesizer.
       </div>
       <div class="text">
-        Off-manifold inversion is the harder regime: the model must produce parameter estimates for audio that no setting of the synthesizer can exactly reproduce, and ground-truth annotations do not exist.
+        The model must produce parameter estimates for audio that no setting of the synthesizer can exactly reproduce, and ground-truth annotations do not exist.
       </div>
       <div id="container-surge_ood"></div>
     </div>
@@ -301,7 +301,13 @@ Evaluating on Surge XT and Dexed, we find our method substantially improves inve
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex will go here</code></pre>
+      <pre><code>@inproceedings{hayes_offmanifold_2026,
+  author    = {Hayes, Ben},
+  title     = {Off-manifold robustness in synthesizer inversion with joint distribution flow matching},
+  booktitle = {Proceedings of the 27th International Society for Music Information Retrieval Conference},
+  address   = {Abu Dhabi, UAE},
+  year      = {2026},
+}</code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
